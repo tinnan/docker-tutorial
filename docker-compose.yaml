@@ -1,0 +1,19 @@
+services:
+  app:
+    image: getting-started
+    ports:
+      - 3000:3000
+    working_dir: /app
+    volumes:
+      - ./secrets:/app/secrets
+  mysql:
+    image: mysql:8.0
+    volumes:
+      - todo-mysql-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: todos
+
+volumes:
+  todo-mysql-data:
+  
